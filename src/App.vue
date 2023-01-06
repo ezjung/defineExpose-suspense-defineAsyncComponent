@@ -1,6 +1,7 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, defineAsyncComponent } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
+// import BaseModal from './components/BaseModal.vue'
 
 const helloWorldRef = ref(null)
 const version = computed(() => helloWorldRef.value?.version)
@@ -9,6 +10,17 @@ const version = computed(() => helloWorldRef.value?.version)
 
 // Even you can trigger the function of child component from parent
 const sayHello = computed(() => helloWorldRef.value.sayHello)
+
+
+
+
+// Examples for defineAsyncComponent
+
+const isModal = ref(null)
+
+// const HelloWorld = defineAsyncComponent(() => import('./components/HelloWorld.vue'))
+const BaseModal = defineAsyncComponent(() => import('./components/BaseModal.vue'))
+
 
 </script>
 
@@ -19,6 +31,10 @@ const sayHello = computed(() => helloWorldRef.value.sayHello)
  <HelloWorld ref="helloWorldRef" />
 
  <h1>version:{{ version }}</h1>
+
+ <BaseModal v-if="isModal" />
+ <button @click="isModal=true">Open Modal</button>
+
 
 </template>
 
