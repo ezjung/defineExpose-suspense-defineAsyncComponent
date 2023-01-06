@@ -32,7 +32,24 @@ const BaseModal = defineAsyncComponent(() => import('./components/BaseModal.vue'
 
  <h1>version:{{ version }}</h1>
 
- <BaseModal v-if="isModal" />
+
+ <!-- <BaseModal v-if="isModal" /> -->
+
+
+ <suspense v-if="isModal">
+
+  <template #default>
+    <BaseModal />
+   </template>
+
+   <template #fallback>
+    <p>Loading...</p>
+   </template>
+
+ </suspense>
+
+
+
  <button @click="isModal=true">Open Modal</button>
 
 
