@@ -21,6 +21,7 @@ const isModal = ref(null)
 // const HelloWorld = defineAsyncComponent(() => import('./components/HelloWorld.vue'))
 const BaseModal = defineAsyncComponent(() => import('./components/BaseModal.vue'))
 
+const closeModal = () => isModal.value = false
 
 </script>
 
@@ -39,7 +40,7 @@ const BaseModal = defineAsyncComponent(() => import('./components/BaseModal.vue'
  <suspense v-if="isModal">
 
   <template #default>
-    <BaseModal />
+    <BaseModal :isBase="isModal" @close="closeModal" />
    </template>
 
    <template #fallback>

@@ -1,6 +1,21 @@
 <script setup>
+import { ref, reactive } from 'vue'
+
+
+const props = defineProps({
+  isBase: Boolean,
+})
+
+const emits = defineEmits([ 'close' ])
 
 await new Promise((res) => setTimeout(res, 2000))
+
+const trueOrFalse = ref(false)
+
+const closeModal = () => {
+    emits('close')
+}
+
 
 </script>
 
@@ -10,6 +25,7 @@ await new Promise((res) => setTimeout(res, 2000))
         <h1>Madal header</h1>
         <p>djjfk djflsdjl jfdlsj fj jflek qw jkfklja 2jd jjd ;klajd dyhwkc</p>
     </div>
+    <button @click="closeModal">Close</button>
   </div>
 </template>
 
