@@ -3,9 +3,11 @@
 import { ref } from 'vue'
  
  const version = ref('1.0.0')
+
+ const arg = 'This is Child Args'
   
- const sayHello = () => {
-  version.value = 'Hello'
+ const sayHello = (arg) => {
+  version.value = arg
   console.log('This msg has been triggered from App and call the function at the HelloWorld component')
  }
   

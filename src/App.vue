@@ -8,6 +8,7 @@ const version = computed(() => helloWorldRef.value?.version)
 // When import property, Make sure to use optional chaining (or a null-check) on helloWorldRef.value, as it's initially null:
 // const version = computed(() => helloWorldRef.value.version)
 
+const arg = "This is parent Args"
 // Even you can trigger the function of child component from parent
 const sayHello = computed(() => helloWorldRef.value.sayHello)
 
@@ -27,7 +28,7 @@ const closeModal = () => isModal.value = false
 
 <template>
 
- <button @click="sayHello()">Change to Hello</button>
+ <button @click="sayHello(arg)">Change to Hello</button>
 
  <HelloWorld ref="helloWorldRef" />
 
